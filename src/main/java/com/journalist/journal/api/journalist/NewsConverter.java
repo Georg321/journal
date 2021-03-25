@@ -1,7 +1,10 @@
 package com.journalist.journal.api.journalist;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class NewsConverter {
 
@@ -12,7 +15,7 @@ public class NewsConverter {
         newsDtoEntity.setTransliterateUrl(news.getTransliterateUrl());
         newsDtoEntity.setTitle(news.getTitle());
         newsDtoEntity.setExcerpt(news.getExcerpt());
-        newsDtoEntity.setDate(news.getDate().substring(0,10));
+        newsDtoEntity.setDate(news.getDate().toLocalDate());
         newsDtoEntity.setCategories(news.getCategories());
         newsDtoEntity.setTags(news.getTags());
         newsDtoEntity.setImages(news.getImages());
@@ -37,7 +40,7 @@ public class NewsConverter {
         newsEntity.setTransliterateUrl(news.getTransliterateUrl());
         newsEntity.setTitle(news.getTitle().getRendered());
         newsEntity.setExcerpt(news.getExcerpt().getRendered());
-        newsEntity.setDate(news.getDate());
+        newsEntity.setDate(LocalDateTime.parse(news.getDate()));
         newsEntity.setCategories(news.getCategories());
         newsEntity.setTags(news.getTags());
         newsEntity.setImages(news.getImages());
