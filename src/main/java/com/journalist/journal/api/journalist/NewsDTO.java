@@ -5,15 +5,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DTO {
+public class NewsDTO {
     private int id;
     private String transliterateUrl;
     private String title;
     private String excerpt;
-    private String date;
+    private LocalDate date;
     private News.CategoriesTags[] categories;
     private News.CategoriesTags[] tags;
     private String[] images;

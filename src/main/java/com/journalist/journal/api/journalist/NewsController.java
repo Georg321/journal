@@ -12,7 +12,7 @@ public class NewsController {
     @Autowired
     private NewsComponent newsComponent;
     @GetMapping("/get-all")
-    public List<DTO> getAllNews(){
+    public List<NewsDTO> getAllNews(){
         return newsComponent.extractNewsFromDb();
     }
 

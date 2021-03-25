@@ -1,14 +1,11 @@
 package com.journalist.journal.api.journalist;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -34,7 +31,7 @@ public class NewsComponent {
         System.out.println(response.hasBody());
     }
 
-    public List<DTO> extractNewsFromDb(){
+    public List<NewsDTO> extractNewsFromDb(){
         return newsConverter.toListDto(newsRepository.findAll());
     }
 

@@ -5,26 +5,26 @@ import java.util.List;
 
 public class NewsConverter {
 
-    public DTO toDto(NewsEntity news){
-        DTO dtoEntity = new DTO();
+    public NewsDTO toDto(NewsEntity news){
+        NewsDTO newsDtoEntity = new NewsDTO();
 
-        dtoEntity.setId(news.getId());
-        dtoEntity.setTransliterateUrl(news.getTransliterateUrl());
-        dtoEntity.setTitle(news.getTitle());
-        dtoEntity.setExcerpt(news.getExcerpt());
-        dtoEntity.setDate(news.getDate().substring(0,10));
-        dtoEntity.setCategories(news.getCategories());
-        dtoEntity.setTags(news.getTags());
-        dtoEntity.setImages(news.getImages());
-        dtoEntity.setAuthorsFullName(news.getAuthorsFullName());
-        dtoEntity.setAuthorsPhotoUrl(news.getAuthorsPhotoUrl());
-        dtoEntity.setViews(news.getViews());
+        newsDtoEntity.setId(news.getId());
+        newsDtoEntity.setTransliterateUrl(news.getTransliterateUrl());
+        newsDtoEntity.setTitle(news.getTitle());
+        newsDtoEntity.setExcerpt(news.getExcerpt());
+        newsDtoEntity.setDate(news.getDate().substring(0,10));
+        newsDtoEntity.setCategories(news.getCategories());
+        newsDtoEntity.setTags(news.getTags());
+        newsDtoEntity.setImages(news.getImages());
+        newsDtoEntity.setAuthorsFullName(news.getAuthorsFullName());
+        newsDtoEntity.setAuthorsPhotoUrl(news.getAuthorsPhotoUrl());
+        newsDtoEntity.setViews(news.getViews());
 
-        return dtoEntity;
+        return newsDtoEntity;
     }
 
-    public List<DTO> toListDto(List<NewsEntity> listNewsEntity){
-        List<DTO> tmpList = new ArrayList<>();
+    public List<NewsDTO> toListDto(List<NewsEntity> listNewsEntity){
+        List<NewsDTO> tmpList = new ArrayList<>();
         for(NewsEntity newsEntity : listNewsEntity){
             tmpList.add(toDto(newsEntity));
         }

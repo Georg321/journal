@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,7 +14,7 @@ public class NewsEntity {
     private String transliterateUrl;
     private String title;
     private String excerpt;
-    private String date;
+    private LocalDateTime date;
     private News.CategoriesTags[] categories;
     private News.CategoriesTags[] tags;
     private String[] images;
