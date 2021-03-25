@@ -1,12 +1,13 @@
 package com.journalist.journal.api.journalist;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class NewsConverter {
+
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
     public NewsDTO toDto(NewsEntity news){
         NewsDTO newsDtoEntity = new NewsDTO();
@@ -40,7 +41,7 @@ public class NewsConverter {
         newsEntity.setTransliterateUrl(news.getTransliterateUrl());
         newsEntity.setTitle(news.getTitle().getRendered());
         newsEntity.setExcerpt(news.getExcerpt().getRendered());
-        newsEntity.setDate(LocalDateTime.parse(news.getDate()));
+        newsEntity.setDate(LocalDateTime.parse(news.getDate(), formatter));
         newsEntity.setCategories(news.getCategories());
         newsEntity.setTags(news.getTags());
         newsEntity.setImages(news.getImages());
