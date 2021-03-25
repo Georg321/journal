@@ -1,20 +1,21 @@
-package com.journalist.journal.api.journalist;
+package com.journalist.journal.api.journalist.entity;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class NewsEntity {
+public class NewsDTO {
     private int id;
     private String transliterateUrl;
     private String title;
     private String excerpt;
-    private LocalDateTime date;
+    private LocalDate date;
     private News.CategoriesTags[] categories;
     private News.CategoriesTags[] tags;
     private String[] images;

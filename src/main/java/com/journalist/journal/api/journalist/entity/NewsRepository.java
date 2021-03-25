@@ -1,4 +1,4 @@
-package com.journalist.journal.api.journalist;
+package com.journalist.journal.api.journalist.entity;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
@@ -11,9 +11,11 @@ public interface NewsRepository extends MongoRepository<NewsEntity, String> {
     List<NewsEntity> findAll();
 
     Optional<NewsEntity> findById(int i);
+    void deleteById(int id);
+    boolean existsById(int id);
 
    // @Query(value = "{transliterateUrl: ?0}")
     List<NewsEntity> findAllByTransliterateUrl(String transliterateUrl);
 
-    void deleteById(int id);
+
 }

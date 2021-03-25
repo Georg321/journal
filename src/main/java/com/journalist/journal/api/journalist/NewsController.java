@@ -1,6 +1,9 @@
 package com.journalist.journal.api.journalist;
 
+import com.journalist.journal.api.journalist.entity.NewsDTO;
+import com.journalist.journal.api.journalist.entity.NewsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +20,7 @@ public class NewsController {
     }
 
     @GetMapping("/get-by-id")
-    public NewsEntity getNewsById(@RequestParam int id){
+    public ResponseEntity<NewsEntity> getNewsById(@RequestParam int id){
         return newsComponent.extractNewsById(id);
     }
 
@@ -26,20 +29,21 @@ public class NewsController {
         return newsComponent.extractNewsByName(name);
     }
 
-    @DeleteMapping ("/delete-all")// TO DO - MICROSERVICE BASE RESPONSE
-    public void deleteAllNews(){
-        newsComponent.deleteNewsFromDb();
+    @DeleteMapping ("/delete-all")
+    public MicroserviceBaseResponse deleteAllNews(){
+        return newsComponent.deleteNewsFromDb();
     }
 
     @DeleteMapping("/delete-by-id")
-    public void deleteById(@RequestParam int id){
-        newsComponent.deleteNewsById(id);
+    public MicroserviceBaseResponse deleteById(@RequestParam int id){
+        return newsComponent.deleteNewsById(id);
     }
 
     // NEW METHOD:
-
+    //↓
     @DeleteMapping("/delete-by-name")
     public void deleteByName(@RequestParam String name){
         newsComponent.deleteNewsByName(name);
     }
+    //↑
 }
