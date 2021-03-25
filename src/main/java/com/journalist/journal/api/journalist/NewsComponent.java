@@ -1,5 +1,6 @@
 package com.journalist.journal.api.journalist;
 
+import com.journalist.journal.api.MicroserviceBaseResponse;
 import com.journalist.journal.api.journalist.entity.News;
 import com.journalist.journal.api.journalist.entity.NewsDTO;
 import com.journalist.journal.api.journalist.entity.NewsEntity;

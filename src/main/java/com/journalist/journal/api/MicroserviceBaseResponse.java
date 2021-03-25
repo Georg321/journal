@@ -1,4 +1,4 @@
-package com.journalist.journal.api.journalist;
+package com.journalist.journal.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
