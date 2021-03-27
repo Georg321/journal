@@ -1,62 +1,57 @@
 package com.journalist.journal.api.journalist;
 
+import com.journalist.journal.api.journalist.entity.News;
+import com.journalist.journal.api.journalist.entity.NewsDTO;
+import com.journalist.journal.api.journalist.entity.NewsEntity;
+
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.stream.Collectors;
 
 public class NewsConverter {
 
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+
     public NewsDTO toDto(NewsEntity news){
-        NewsDTO newsDtoEntity = new NewsDTO();
-
-        newsDtoEntity.setId(news.getId());
-        newsDtoEntity.setTransliterateUrl(news.getTransliterateUrl());
-        newsDtoEntity.setTitle(news.getTitle());
-        newsDtoEntity.setExcerpt(news.getExcerpt());
-        newsDtoEntity.setDate(news.getDate().toLocalDate());
-        newsDtoEntity.setCategories(news.getCategories());
-        newsDtoEntity.setTags(news.getTags());
-        newsDtoEntity.setImages(news.getImages());
-        newsDtoEntity.setAuthorsFullName(news.getAuthorsFullName());
-        newsDtoEntity.setAuthorsPhotoUrl(news.getAuthorsPhotoUrl());
-        newsDtoEntity.setViews(news.getViews());
-
-        return newsDtoEntity;
+        return new NewsDTO(
+                news.getId(),
+                news.getTransliterateUrl(),
+                news.getTitle(),
+                news.getExcerpt(),
+                    news.getDate().toLocalDate(),
+                news.getCategories(),
+                news.getTags(),
+                news.getImages(),
+                news.getAuthorsFullName(),
+                news.getAuthorsPhotoUrl(),
+                news.getViews()
+        );
     }
 
     public List<NewsDTO> toListDto(List<NewsEntity> listNewsEntity){
-        List<NewsDTO> tmpList = new ArrayList<>();
-        for(NewsEntity newsEntity : listNewsEntity){
-            tmpList.add(toDto(newsEntity));
-        }
-        return tmpList;
+        //return listNewsEntity.stream().map(n->toDto(n)).collect(Collectors.toList());
+        return listNewsEntity.stream().map(this::toDto).collect(Collectors.toList());
     }
 
     public NewsEntity toNewsEntity(News news){
-        NewsEntity newsEntity = new NewsEntity();
-        newsEntity.setId(news.getId());
-        newsEntity.setTransliterateUrl(news.getTransliterateUrl());
-        newsEntity.setTitle(news.getTitle().getRendered());
-        newsEntity.setExcerpt(news.getExcerpt().getRendered());
-        newsEntity.setDate(LocalDateTime.parse(news.getDate()));
-        newsEntity.setCategories(news.getCategories());
-        newsEntity.setTags(news.getTags());
-        newsEntity.setImages(news.getImages());
-        newsEntity.setAuthorsFullName(news.getAuthorsFullName());
-        newsEntity.setAuthorsPhotoUrl(news.getAuthorsPhotoUrl());
-        newsEntity.setViews(news.getViews());
-
-        return newsEntity;
+        return new NewsEntity(
+                news.getId(),
+                news.getTransliterateUrl(),
+                    news.getTitle().getRendered(),
+                    news.getExcerpt().getRendered(),
+                    LocalDateTime.parse(news.getDate(), formatter),
+                news.getCategories(),
+                news.getTags(),
+                news.getImages(),
+                news.getAuthorsFullName(),
+                news.getAuthorsPhotoUrl(),
+                news.getId()
+        );
     }
 
     public List<NewsEntity> toListNewsEntity(List<News> listNews){
-        List<NewsEntity> tmpList = new ArrayList<>();
-        for(News news : listNews){
-            tmpList.add(toNewsEntity(news));
-        }
-        return tmpList;
+        return listNews.stream().map(this::toNewsEntity).collect(Collectors.toList());
     }
 
 }
