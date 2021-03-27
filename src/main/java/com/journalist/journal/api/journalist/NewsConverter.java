@@ -30,8 +30,8 @@ public class NewsConverter {
     }
 
     public List<NewsDTO> toListDto(List<NewsEntity> listNewsEntity){
-        //return listNewsEntity.stream().map(n->toDto(n)).collect(Collectors.toList());
-        return listNewsEntity.stream().map(this::toDto).collect(Collectors.toList());
+        //return listNewsEntity.stream().map(n->toDto(n)).collect(Collectors.toList()); // same but different syntax
+        return listNewsEntity.stream().map(this::toDto).collect(Collectors.toList()); // stream() applied to incoming list so we can invoke methods which allow us to work with data using different methods after we apply each element of list toNewsEntity() method we put it back together in list using collections
     }
 
     public NewsEntity toNewsEntity(News news){
@@ -51,7 +51,7 @@ public class NewsConverter {
     }
 
     public List<NewsEntity> toListNewsEntity(List<News> listNews){
-        return listNews.stream().map(this::toNewsEntity).collect(Collectors.toList());
+        return listNews.stream().map(this::toNewsEntity).collect(Collectors.toList()); // stream() applied to incoming list so we can invoke methods which allow us to work with data using different methods after we apply each element of list toNewsEntity() method we put it back together in list using collections
     }
 
 }

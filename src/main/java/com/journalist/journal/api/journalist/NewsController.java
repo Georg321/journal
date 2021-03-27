@@ -33,12 +33,12 @@ public class NewsController {
     @DeleteMapping ("/delete-all")
     public MicroserviceBaseResponse deleteAllNews(){
         return newsComponent.deleteNewsFromDb();
-    }
+    } // now this method return MicrobaseResonse which is responsible for giving feedback if operation was successful or not
 
     @DeleteMapping("/delete-by-id")
     public MicroserviceBaseResponse deleteById(@RequestParam int id){
         return newsComponent.deleteNewsById(id);
-    }
+    } // now this method return MicrobaseResonse which is responsible for giving feedback if operation was successful or not
 
     // NEW METHOD:
     //↓

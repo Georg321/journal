@@ -25,7 +25,7 @@ public class NewsComponent {
     private NewsRepository newsRepository;  //Интерфейс для работы с бд
 
     @Value("${host}")
-    private String host;
+    private String host; // the value is given in properties as well, and can be accessed anywhere
 
     RestTemplate restTemplate = new RestTemplate();
     NewsConverter newsConverter = new NewsConverter();
