@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
-import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -70,10 +69,8 @@ public class NewsComponent {
     }
 
     //↓
-    public void deleteNewsByName(String name) {
-        for (NewsEntity news : newsRepository.findAllByTransliterateUrl(name)) {
-            newsRepository.deleteById(news.getId());
-        }
+    public void deleteNewsByName(String transliterateUrl) {
+        newsRepository.deleteAllByTransliterateUrl(transliterateUrl);
     }
     //↑
 }

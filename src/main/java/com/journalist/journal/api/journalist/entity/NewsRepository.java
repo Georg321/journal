@@ -13,6 +13,7 @@ public interface NewsRepository extends MongoRepository<NewsEntity, String> {
     Optional<NewsEntity> findById(int i);
     void deleteById(int id);
     boolean existsById(int id);
+    void deleteAllByTransliterateUrl(String trasliterateUrl);
 
    // @Query(value = "{transliterateUrl: ?0}")
     List<NewsEntity> findAllByTransliterateUrl(String transliterateUrl);

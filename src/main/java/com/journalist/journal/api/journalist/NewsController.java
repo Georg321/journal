@@ -42,9 +42,9 @@ public class NewsController {
 
     // NEW METHOD:
     //↓
-    @DeleteMapping("/delete-by-name")
-    public void deleteByName(@RequestParam String name){
-        newsComponent.deleteNewsByName(name);
+    @DeleteMapping("/delete-by-transliterate-url")
+    public void deleteByTransliterateUrl(@RequestParam String transliterateUrl){
+        newsComponent.deleteNewsByName(transliterateUrl);
     }
     //↑
 }
