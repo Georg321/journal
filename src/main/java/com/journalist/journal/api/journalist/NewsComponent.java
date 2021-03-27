@@ -69,7 +69,7 @@ public class NewsComponent {
     }
 
     //↓
-    public void deleteNewsByName(String transliterateUrl) {
+    public void deleteNewsByTransliterateUrl(String transliterateUrl) {
         newsRepository.deleteAllByTransliterateUrl(transliterateUrl);
     }
     //↑
